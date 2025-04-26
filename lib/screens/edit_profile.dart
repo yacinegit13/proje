@@ -163,7 +163,7 @@ class _EditProfileState extends State<EditProfile> {
           actions: [
             TextButton(
               onPressed: () => Navigator.pop(context),
-              child: const Text("إلغاء"),
+              child: const Text("cancellation"),
             ),
           ],
         );

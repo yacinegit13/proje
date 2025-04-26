@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
+//import 'generated/l10n.dart';
+
 
 const Color dark1 = Color(0xFF0F2EA8);
 const Color dark2 = Color(0xFF133FCC);
@@ -27,14 +29,27 @@ class StartPage extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              const Text(
-                "Introduction",
-                style: TextStyle(
-                  fontSize: 24,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.white,
-                ),
-              ),
+             Row(
+  mainAxisAlignment: MainAxisAlignment.start,
+  children: [
+    IconButton(
+      icon: const Icon(Icons.arrow_back, color: Colors.white),
+      onPressed: () {
+        Navigator.pop(context);
+      },
+    ),
+    const Text(
+      /*S.of(context).introduction*/ "Introduction", // Affiche "Bienvenue", "Welcome" ou "مرحبا"
+
+      style: TextStyle(
+        fontSize: 24,
+        fontWeight: FontWeight.bold,
+        color: Colors.white,
+      ),
+    ),
+  ],
+),
+
               const SizedBox(height: 20),
               const Text(
                 "Quiz Sign Language",
@@ -80,7 +95,7 @@ class StartPage extends StatelessWidget {
       ),
     );
   }
-}
+}                   
 
 class Question {
   final String question;

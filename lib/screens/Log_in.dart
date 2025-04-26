@@ -22,7 +22,10 @@ class _LogInState extends State<LogIn> {
               height: 180,
               decoration: BoxDecoration(
                 gradient: LinearGradient(
-                  colors: [Color(0xFF1649F1), Color(0xFFFFD700)],
+                   colors: [
+                Color.fromARGB(255, 15, 39, 252), // Bleu intense
+                Color.fromARGB(255, 0, 191, 255), // Bleu clair
+              ],
                   begin: Alignment.topLeft,
                   end: Alignment.bottomRight,
                 ),
@@ -112,7 +115,7 @@ class _LogInState extends State<LogIn> {
                           if (_formKey.currentState!.validate()) {
                             Navigator.of(
                               context,
-                            ).pushReplacementNamed('/profilpage');
+                            ).pushReplacementNamed('/selectuser');
                           }
                         },
                         style: ElevatedButton.styleFrom(

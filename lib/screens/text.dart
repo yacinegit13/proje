@@ -27,7 +27,7 @@ class _TranslationScreenState extends State<TranslationScreen> {
             ),
           ),
         ),
-        title: Text("ترجمة لغة الإشارة", style: TextStyle(color: Colors.white)),
+        title: Text("Sign language translation", style: TextStyle(color: Colors.white)),
         centerTitle: true,
         leading: IconButton(
           icon: Icon(Icons.arrow_back, color: Colors.white),
@@ -53,7 +53,7 @@ class _TranslationScreenState extends State<TranslationScreen> {
                 borderRadius: BorderRadius.circular(8),
               ),
               child: Text(
-                "أدخل النص للترجمة:",
+                "Enter text to translate:",
                 style: TextStyle(
                   fontSize: 28,
                   fontWeight: FontWeight.bold,
@@ -66,7 +66,7 @@ class _TranslationScreenState extends State<TranslationScreen> {
               controller: _textController,
               decoration: InputDecoration(
                 border: OutlineInputBorder(),
-                hintText: "اكتب النص هنا",
+                hintText: "Type text here",
                 hintStyle: TextStyle(fontSize: 18),
               ),
               style: TextStyle(fontSize: 20),
@@ -103,12 +103,12 @@ class _TranslationScreenState extends State<TranslationScreen> {
                     );
                   } else {
                     ScaffoldMessenger.of(context).showSnackBar(
-                      SnackBar(content: Text('الرجاء إدخال نص للترجمة')),
+                      SnackBar(content: Text('Please enter text for translation')),
                     );
                   }
                 },
                 child: Text(
-                  "ترجمة",
+                  "translation",
                   style: TextStyle(fontSize: 22, color: Colors.white),
                 ),
               ),

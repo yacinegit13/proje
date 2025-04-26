@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:projet_signe/main.dart';
 // ignore: unused_import
 import 'package:projet_signe/screens/about_us.dart';
+// ignore: unused_import
+import 'package:projet_signe/screens/theme_notifier.dart'; // chemin à adapter
+
 
 class SettingsScreen extends StatefulWidget {
   const SettingsScreen({super.key});
@@ -12,12 +16,13 @@ class SettingsScreen extends StatefulWidget {
 
 class _SettingsScreenState extends State<SettingsScreen> {
   bool pushNotifications = false;
-  bool darkMode = false;
+  
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: darkMode ? Colors.black : Colors.white,
+      backgroundColor: themeNotifier.value ?   Colors.black : Colors.white,
+
       body: Column(
         children: [
           // HEADER
@@ -25,39 +30,34 @@ class _SettingsScreenState extends State<SettingsScreen> {
             color: Color(0xFF1664F3),
             padding: EdgeInsets.only(top: 40, left: 16, right: 16, bottom: 20),
             child: Row(
-              children: [
-                Row(
-                  children: [
-                    Icon(Icons.settings, color: Colors.white, size: 40),
-                    SizedBox(width: 8),
-                    Text(
-                      'Settings',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 24,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ],
-                ),
-                Expanded(child: Container()), // pour prendre l'espace restant
-                GestureDetector(
-                  onTap: () {},
-                  child: IconButton(
-                    icon: Icon(Icons.arrow_back, color: Colors.white, size: 24),
-                    onPressed: () {
-                      Navigator.of(context).pushNamed('/profilpage');
-                    },
-                  ),
-                ),
-              ],
-            ),
+  children: [
+    IconButton(
+      icon: const Icon(Icons.arrow_back, color: Colors.white, size: 28),
+      onPressed: () {
+        Navigator.of(context).pop(); // ou pushNamed si tu préfères
+      },
+    ),
+    const SizedBox(width: 8),
+    const Icon(Icons.settings, color: Colors.white, size: 32),
+    const SizedBox(width: 8),
+    const Text(
+      'Settings',
+      style: TextStyle(
+        color: Colors.white,
+        fontSize: 24,
+        fontWeight: FontWeight.bold,
+      ),
+    ),
+  ],
+),
+
           ),
 
           // PROFILE
           Container(
             padding: EdgeInsets.symmetric(vertical: 16),
-            color: darkMode ? Colors.black : Colors.white,
+            color: themeNotifier.value ?   Colors.black : Colors.white,
+
             child: Column(
               children: [
                 CircleAvatar(
@@ -71,7 +71,8 @@ class _SettingsScreenState extends State<SettingsScreen> {
                   'Mon Nom',
                   style: TextStyle(
                     fontSize: 25,
-                    color: darkMode ? Colors.white : Colors.black,
+                    color: themeNotifier.value ? Colors.white : Colors.black,
+
                   ),
                 ),
               ],
@@ -99,7 +100,8 @@ class _SettingsScreenState extends State<SettingsScreen> {
                   title: Text(
                     'Edit profile',
                     style: TextStyle(
-                      color: darkMode ? Colors.white : Colors.black,
+                      color: themeNotifier.value ? Colors.white : Colors.black,
+
                     ),
                   ),
                   trailing: Icon(Icons.arrow_forward_ios, size: 16),
@@ -112,7 +114,8 @@ class _SettingsScreenState extends State<SettingsScreen> {
                   title: Text(
                     'Privacy',
                     style: TextStyle(
-                      color: darkMode ? Colors.white : Colors.black,
+                      color: themeNotifier.value ? Colors.white : Colors.black,
+
                     ),
                   ),
                   trailing: Icon(Icons.arrow_forward_ios, size: 16),
@@ -124,7 +127,8 @@ class _SettingsScreenState extends State<SettingsScreen> {
                   title: Text(
                     'Push notifications',
                     style: TextStyle(
-                      color: darkMode ? Colors.white : Colors.black,
+                      color: themeNotifier.value ? Colors.white : Colors.black,
+
                     ),
                   ),
                   value: pushNotifications,
@@ -136,29 +140,20 @@ class _SettingsScreenState extends State<SettingsScreen> {
                   activeColor: Color(0xFF1664F3),
                 ),
                 SwitchListTile(
-                  /* title: Text('Dark mode'),
-                  value: darkMode,
-                  onChanged: (bool value) {
-                    setState(() {
-                      darkMode = value;
-                    });
-                  },
-                  activeColor: Color(0xFF1664F3),
-                ),*/
-                  title: Text(
-                    'Dark mode',
-                    style: TextStyle(
-                      color: darkMode ? Colors.white : Colors.black,
-                    ),
-                  ),
-                  value: darkMode,
-                  onChanged: (bool value) {
-                    setState(() {
-                      darkMode = value;
-                    });
-                  },
-                  activeColor: Color(0xFF1664F3),
-                ),
+  title: Text(
+    'Dark mode',
+    style: TextStyle(
+      color: themeNotifier.value ? Colors.white : Colors.black,
+    ),
+  ),
+  value: themeNotifier.value,
+  onChanged: (bool value) {
+    themeNotifier.toggleTheme(); // change globalement
+    setState(() {}); // pour reconstruire localement si nécessaire
+  },
+  activeColor: Color(0xFF1664F3),
+),
+
                 Container(
                   height: 0.25,
                   color: Colors.grey,
@@ -176,7 +171,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                   title: Text(
                     'About us',
                     style: TextStyle(
-                      color: darkMode ? Colors.white : Colors.black,
+                     color: themeNotifier.value ? Colors.white : Colors.black,
                     ),
                   ),
                   trailing: Icon(Icons.arrow_forward_ios, size: 16),
@@ -188,7 +183,8 @@ class _SettingsScreenState extends State<SettingsScreen> {
                   title: Text(
                     'Terms and conditions',
                     style: TextStyle(
-                      color: darkMode ? Colors.white : Colors.black,
+                      color: themeNotifier.value ? Colors.white : Colors.black,
+
                     ),
                   ),
                   trailing: Icon(Icons.arrow_forward_ios, size: 16),
@@ -201,7 +197,8 @@ class _SettingsScreenState extends State<SettingsScreen> {
                   title: Text(
                     'log out',
                     style: TextStyle(
-                      color: darkMode ? Colors.white : Colors.black,
+                      color: themeNotifier.value ? Colors.white : Colors.black,
+
                     ),
                   ),
                   trailing: Icon(Icons.arrow_forward_ios, size: 16),

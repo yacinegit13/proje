@@ -137,15 +137,16 @@ class _NewRecordingScreenState extends State<NewRecordingScreen> {
         //leading: const BackButton(color: Colors.black),
         leading: IconButton(
           icon: const Icon(Icons.arrow_back, color: Colors.black),
-          onPressed: () {}, // <- Le bouton ne fait rien
+          onPressed: () { Navigator.pop(context);}, // <- Le bouton ne fait rien
         ),
         title: const Text(
           'New Recording',
           style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
         ),
+        
         actions: [
           IconButton(
-            icon: const Icon(Icons.notifications_outlined, color: Colors.black),
+            icon: const Icon(Icons.language, color: Colors.black),
             onPressed: () {},
           ),
         ],

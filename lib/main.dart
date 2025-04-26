@@ -12,6 +12,7 @@ import 'package:projet_signe/screens/days.dart';
 import 'package:projet_signe/screens/edit_profile.dart';
 import 'package:projet_signe/screens/forget_passwored.dart';
 import 'package:projet_signe/screens/homme_coures.dart';
+import 'package:projet_signe/screens/la_premiere.dart';
 import 'package:projet_signe/screens/nomber.dart';
 import 'package:projet_signe/screens/start_cour.dart';
 import 'package:projet_signe/screens/terms_and_conditions.dart';
@@ -26,15 +27,35 @@ import 'screens/first_page.dart';
 import 'screens/seconed_page.dart';
 import 'screens/select_user.dart';
 import 'screens/select.dart';
+import 'screens/theme_notifier.dart';
+//import 'package:flutter_localizations/flutter_localizations.dart';
+//import 'generated/l10n.dart'; // On le génère ensuite
 
+
+final ThemeNotifier themeNotifier = ThemeNotifier();
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+   try {
+    await Supabase.initialize(
+      url: 'VOTRE_URL_SUPABASE',
+      anonKey: 'VOTRE_CLE_PUBLIQUE_ANON',
+    );
+    
+    // Test de connexion
+    await Supabase.instance.client
+        .from('sign_videos')
+        .select('count')
+        .single();
+    
+  // ignore: empty_catches
+  } catch (e) {
+  }
 
-  await Supabase.initialize(
+  /*await Supabase.initialize(
     url: 'https://rpdvzbdycjhetwfcqhzj.supabase.co',
     anonKey:
         'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJwZHZ6YmR5Y2poZXR3ZmNxaHpqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDE0NjIwMzksImV4cCI6MjA1NzAzODAzOX0.uLXYVTaRB_D8oWi4ifLjdbucOy8PF5qIsWYfG8ork3g',
-  );
+  );*/
   runApp(MyApp());
 }
 
@@ -43,14 +64,33 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+     return ValueListenableBuilder<bool>(
+      valueListenable: themeNotifier,
+      builder: (context, isDarkMode, _) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
+     /* theme: isDarkMode ? ThemeData.dark() : ThemeData.light(),
         //scaffoldBackgroundColor: AppColors.background,
-      ),
+        localizationsDelegates: const [
+           // S.delegate,
+            GlobalMaterialLocalizations.delegate,
+            GlobalWidgetsLocalizations.delegate,
+            GlobalCupertinoLocalizations.delegate,
+          ],
+          supportedLocales: S.delegate.supportedLocales,
+          localeResolutionCallback: (locale, supportedLocales) {
+            for (var supportedLocale in supportedLocales) {
+              if (supportedLocale.languageCode == locale?.languageCode) {
+                return supportedLocale;
+              }
+            }
+            return supportedLocales.first;
+          },
+      */
       initialRoute: '/',
       routes: {
-        '/': (context) => FirstPage(),
+        '/': (context) => SplashScreen(),
+        '/logorsign': (context) => FirstPage(),
         '/signlog': (context) => SecondPage(),
         '/login': (context) => LogIn(),
         '/signup': (context) => SignUp(),
@@ -69,7 +109,7 @@ class MyApp extends StatelessWidget {
         '/start_page_quizz': (context) => StartPage(),
         '/quizz': (context) => QuizPage(),
         '/parametre': (context) => SettingsScreen(),
-        '/about_us': (context) => AboutUs(),
+        '/about_us': (context) => FhamniHomePage(),
         '/changhe': (context) => ChangePasswordPage(),
         '/terms_and_condition': (context) => TermsAndConditions(),
         '/editprofile': (context) => EditProfile(),
@@ -82,4 +122,6 @@ class MyApp extends StatelessWidget {
       },
     );
   }
+     );
+}
 }

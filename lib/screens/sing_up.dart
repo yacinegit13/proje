@@ -29,7 +29,10 @@ class _SignUpState extends State<SignUp> {
                   height: 220,
                   decoration: BoxDecoration(
                     gradient: LinearGradient(
-                      colors: [Color(0xFF1649F1), Color(0xFFFFD700)],
+                       colors: [
+                Color.fromARGB(255, 15, 39, 252), // Bleu intense
+                Color.fromARGB(255, 0, 191, 255), // Bleu clair
+              ],
                       begin: Alignment.topLeft,
                       end: Alignment.bottomRight,
                     ),

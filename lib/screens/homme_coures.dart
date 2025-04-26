@@ -11,74 +11,28 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color.fromARGB(255, 177, 173, 184),
-      appBar: AppBar(
-        toolbarHeight: 100,
-        backgroundColor: Colors.white,
-        elevation: 0,
-        title: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Row(
-                children: [
-                  const CircleAvatar(
-                    radius: 25,
-                    backgroundImage: AssetImage('images/edf.PNG'),
-                  ),
-                  const SizedBox(width: 10),
-                  const Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        'Hello,',
-                        style: TextStyle(fontSize: 20, color: Colors.grey),
-                      ),
-                      Text(
-                        'Belaidi Zineb',
-                        style: TextStyle(
-                          fontSize: 30,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                    ],
-                  ),
-                ],
-              ),
-            ],
-          ),
-        ),
-      ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Container(
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(30),
-                boxShadow: const [
-                  BoxShadow(color: Colors.grey, spreadRadius: 2, blurRadius: 5),
-                ],
-              ),
-              child: const TextField(
-                decoration: InputDecoration(
-                  hintText: 'Search.....',
-                  prefixIcon: Icon(Icons.search, color: Colors.grey),
-                  border: InputBorder.none,
-                  contentPadding: EdgeInsets.symmetric(
-                    horizontal: 20,
-                    vertical: 15,
-                  ),
-                ),
-              ),
-            ),
+          children: [      
             const SizedBox(height: 20),
-            const Text(
-              'Sign Language Lessons',
-              style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
-            ),
+           Row(
+  children: [
+    IconButton(
+      icon: const Icon(Icons.arrow_back, size: 28),
+      onPressed: () {
+        Navigator.of(context).pop(); // revenir à l'écran précédent
+      },
+    ),
+    const SizedBox(width: 8),
+    const Text(
+      'Sign Language Lessons',
+      style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+    ),
+  ],
+),
+
             const SizedBox(height: 20),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -105,12 +59,12 @@ class HomeScreen extends StatelessWidget {
                 crossAxisSpacing: 16,
                 children: [
                   LessonCard(
-                    title: ' حروف الأبجدية بالاشارة',
+                    title: ' Alphabet letters with signs',
                     duration: '10 min',
                     image: 'images/vds.PNG',
                   ),
                   LessonCard(
-                    title: 'إشارات التواصل اليومي',
+                    title: 'Daily communication signals',
                     duration: '15 min',
                     image: 'images/mn.PNG',
                   ),

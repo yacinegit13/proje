@@ -13,7 +13,7 @@ class WelcomeScreen extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.only(right: 16.0),
             child: TextButton(
-              onPressed: () {},
+              onPressed: () {Navigator.pushNamed(context, '/homme');},
               child: const Text(
                 'Skip',
                 style: TextStyle(
@@ -64,7 +64,7 @@ class WelcomeScreen extends StatelessWidget {
                   width: double.infinity,
                   child: Column(
                     children: [
-                      Row(
+                      /*Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Container(
@@ -95,7 +95,7 @@ class WelcomeScreen extends StatelessWidget {
                             ),
                           ),
                         ],
-                      ),
+                      ),*/
                       const SizedBox(height: 20),
                       ElevatedButton(
                         style: ElevatedButton.styleFrom(

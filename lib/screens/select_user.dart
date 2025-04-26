@@ -47,16 +47,44 @@ class _SelectUserTypeScreenState extends State<SelectUserTypeScreen> {
           child: Column(
             children: [
               const SizedBox(height: 20),
-              const Center(
-                child: Text(
-                  "Select User Type",
-                  style: TextStyle(
-                    fontSize: 28,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.black,
-                  ),
-                ),
-              ),
+              Padding(
+  padding: const EdgeInsets.symmetric(horizontal: 16.0),
+  child: Row(
+    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    children: [
+      Row(
+        children: [
+          IconButton(
+            icon: const Icon(Icons.arrow_back, color: Colors.white),
+            onPressed: () {
+              Navigator.pop(context);
+            },
+          ),
+          const SizedBox(width: 8),
+          const Text(
+            "Select User Type",
+            style: TextStyle(
+              fontSize: 28,
+              fontWeight: FontWeight.bold,
+              color: Colors.white,
+            ),
+          ),
+        ],
+      ),
+      IconButton(
+        icon: const Icon(Icons.settings, color: Colors.white),
+        onPressed: () {
+          Navigator.pushNamed(context, '/parametre');
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(content: Text("Open settings")),
+          );
+        },
+      ),
+    ],
+  ),
+),
+
+
               const SizedBox(height: 40),
               Expanded(
                 child: GridView.count(

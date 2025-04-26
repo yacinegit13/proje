@@ -83,7 +83,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
           actions: [
             TextButton(
               onPressed: () => Navigator.pop(context),
-              child: const Text("إلغاء"),
+              child: const Text("cancellation"),
             ),
           ],
         );
@@ -95,20 +95,20 @@ class _ProfileScreenState extends State<ProfileScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Profile"),
+        title: const Text("Profile",style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),),
         backgroundColor: const Color(0xFF1649F1),
         leading: IconButton(
-          icon: const Icon(Icons.arrow_back),
+          icon: const Icon(Icons.arrow_back, color: Colors.white),
           onPressed: () => Navigator.pop(context),
         ),
         actions: [
           IconButton(
-            icon: const Icon(Icons.settings),
+            icon: const Icon(Icons.settings, color: Colors.white),
             onPressed: () {
               Navigator.pushNamed(context, '/parametre');
               ScaffoldMessenger.of(
                 context,
-              ).showSnackBar(const SnackBar(content: Text("فتح الإعدادات")));
+              ).showSnackBar(const SnackBar(content: Text("Open settings")));
             },
           ),
         ],
@@ -146,7 +146,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
               ),
             ),
             Text(
-              "1000 Followers | 1000 Following",
+              "welcome", // Affiche "Bienvenue", "Welcome" ou "مرحبا"
+
               style: GoogleFonts.poppins(fontSize: 14, color: Colors.grey),
             ),
             const SizedBox(height: 20),
@@ -172,7 +173,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
               text: "saved",
               onPressed: () {
                 ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar(content: Text("تم التسجيل بنجاح! ✅")),
+                  const SnackBar(content: Text("Registration completed successfully! ✅")),
                 );
 
                 Navigator.pushNamed(context, '/selectuser');
