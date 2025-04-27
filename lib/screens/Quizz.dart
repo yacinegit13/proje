@@ -25,71 +25,73 @@ class StartPage extends StatelessWidget {
             stops: const [0.1, 0.3, 0.5, 0.7, 0.9],
           ),
         ),
-        child: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
+        child: SingleChildScrollView(
+          child: Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+               Row(
+            mainAxisAlignment: MainAxisAlignment.start,
             children: [
-             Row(
-  mainAxisAlignment: MainAxisAlignment.start,
-  children: [
-    IconButton(
-      icon: const Icon(Icons.arrow_back, color: Colors.white),
-      onPressed: () {
-        Navigator.pop(context);
-      },
-    ),
-    const Text(
-      /*S.of(context).introduction*/ "Introduction", // Affiche "Bienvenue", "Welcome" ou "مرحبا"
-
-      style: TextStyle(
-        fontSize: 24,
-        fontWeight: FontWeight.bold,
-        color: Colors.white,
-      ),
-    ),
-  ],
-),
-
-              const SizedBox(height: 20),
-              const Text(
-                "Quiz Sign Language",
-                style: TextStyle(
-                  fontSize: 32,
-                  fontWeight: FontWeight.bold,
-                  color: yellowTitle,
-                ),
-              ),
-              const SizedBox(height: 10),
-              const Text(
-                "PLAYING THE GAME AND LEARN",
-                style: TextStyle(fontSize: 18, color: Colors.white),
-              ),
-              const SizedBox(height: 100),
-              Image.asset('images/PLAY.jpeg', height: 450),
-              const SizedBox(height: 100),
-              ElevatedButton(
+              IconButton(
+                icon: const Icon(Icons.arrow_back, color: Colors.white),
                 onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => const QuizPage()),
-                  );
+          Navigator.pop(context);
                 },
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.red,
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 40,
-                    vertical: 15,
-                  ),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(30),
-                  ),
-                ),
-                child: const Text(
-                  "START PLAYING",
-                  style: TextStyle(fontSize: 20, color: Colors.white),
+              ),
+              const Text(
+                /*S.of(context).introduction*/ "Introduction", // Affiche "Bienvenue", "Welcome" ou "مرحبا"
+          
+                style: TextStyle(
+          fontSize: 24,
+          fontWeight: FontWeight.bold,
+          color: Colors.white,
                 ),
               ),
             ],
+          ),
+          
+                const SizedBox(height: 20),
+                const Text(
+                  "Quiz Sign Language",
+                  style: TextStyle(
+                    fontSize: 32,
+                    fontWeight: FontWeight.bold,
+                    color: yellowTitle,
+                  ),
+                ),
+                const SizedBox(height: 10),
+                const Text(
+                  "PLAYING THE GAME AND LEARN",
+                  style: TextStyle(fontSize: 18, color: Colors.white),
+                ),
+                const SizedBox(height: 100),
+                Image.asset('images/PLAY.jpeg', height: 450),
+                const SizedBox(height: 100),
+                ElevatedButton(
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => const QuizPage()),
+                    );
+                  },
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.red,
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 40,
+                      vertical: 15,
+                    ),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(30),
+                    ),
+                  ),
+                  child: const Text(
+                    "START PLAYING",
+                    style: TextStyle(fontSize: 20, color: Colors.white),
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
       ),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/foundation.dart'; // Import pour kDebugMode
+import 'package:projet_signe/main.dart';
 import 'package:projet_signe/screens/animation.dart';
 import 'package:speech_to_text/speech_to_text.dart' as stt;
 
@@ -130,7 +131,7 @@ class _NewRecordingScreenState extends State<NewRecordingScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: themeNotifier.value ?   Colors.black : Colors.white,
       appBar: AppBar(
         backgroundColor: Colors.white,
         elevation: 0,

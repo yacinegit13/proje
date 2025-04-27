@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 
+
 class AlphabetCour extends StatelessWidget {
   final List<String> alphabetList = List.generate(
     26,
     (index) => String.fromCharCode(65 + index),
   );
+
+  AlphabetCour({super.key});
 
   @override
   Widget build(BuildContext context) {

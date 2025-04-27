@@ -13,6 +13,7 @@ import 'package:projet_signe/screens/edit_profile.dart';
 import 'package:projet_signe/screens/forget_passwored.dart';
 import 'package:projet_signe/screens/homme_coures.dart';
 import 'package:projet_signe/screens/la_premiere.dart';
+import 'package:projet_signe/screens/mois.dart';
 import 'package:projet_signe/screens/nomber.dart';
 import 'package:projet_signe/screens/start_cour.dart';
 import 'package:projet_signe/screens/terms_and_conditions.dart';
@@ -119,6 +120,7 @@ class MyApp extends StatelessWidget {
         '/day': (context) => SignLanguageDays(),
         '/chat': (context) => ChatScreen(),
         '/nomber': (context) => NumbersPage(),
+        '/moi': (context) => MonthsPage(),
       },
     );
   }
