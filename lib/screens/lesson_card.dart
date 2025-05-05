@@ -54,7 +54,7 @@ class LessonCard extends StatelessWidget {
                     IconButton(
                       icon: const Icon(
                         Icons.play_circle_fill,
-                        color: Colors.blue,
+                        color:  Color.fromARGB(255, 63, 150, 222),
                       ),
                       onPressed: () {},
                     ),

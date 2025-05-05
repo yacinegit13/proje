@@ -1,9 +1,17 @@
 import 'package:flutter/material.dart';
 
+
 class AnimalsPage extends StatelessWidget {
   final List<String> animalsList = [
-    'Cat', 'Chicken', 'Cow',
-    'Dog', 'Duck', 'Horse', 'Sheep',
+    'Cat','Alligator','Animals',
+    'Bat','Bear','Bird',
+    'Bluefish','Cheetah','Chicken',
+     'Deer', 'Elephant','Fish','Fly','Fox',
+    'Dog', 'Giraffe', 'Goat',
+    'Lion','Lizard','Mouse'
+    ,'Parrot','Penguin',
+    'Reptiles','Shark','Sheep', 
+    'Snake','Spider','Tiger','Turtle','Wolf'
   ];
 
   @override
@@ -27,7 +35,7 @@ class AnimalsPage extends StatelessWidget {
                 foregroundColor: Colors.black,
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(12),
-                  side: BorderSide(color: Colors.green),
+                  side: BorderSide(color: Color.fromARGB(255, 63, 150, 222)),
                 ),
               ),
               onPressed: () => _showSignDialog(context, animal),
@@ -49,7 +57,7 @@ class AnimalsPage extends StatelessWidget {
       builder: (_) => AlertDialog(
         title: Text(animal),
         content: Image.asset(
-          'assets/animals/$animal.png', // تأكد من أسماء الصور
+          'assets/animals/$animal.gif', // تأكد من أسماء الصور
           fit: BoxFit.cover,
         ),
         actions: [

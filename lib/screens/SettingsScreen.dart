@@ -27,23 +27,23 @@ class _SettingsScreenState extends State<SettingsScreen> {
         children: [
           // HEADER
           Container(
-            color: Color(0xFF1664F3),
+            color: Color.fromARGB(255, 255, 255, 255),
             padding: EdgeInsets.only(top: 40, left: 16, right: 16, bottom: 20),
             child: Row(
   children: [
     IconButton(
-      icon: const Icon(Icons.arrow_back, color: Colors.white, size: 28),
+      icon: const Icon(Icons.arrow_back, color: Color.fromARGB(255, 63, 150, 222), size: 28),
       onPressed: () {
         Navigator.of(context).pop(); // ou pushNamed si tu préfères
       },
     ),
     const SizedBox(width: 8),
-    const Icon(Icons.settings, color: Colors.white, size: 32),
+    const Icon(Icons.settings, color: Color.fromARGB(255, 63, 150, 222), size: 32),
     const SizedBox(width: 8),
     const Text(
       'Settings',
       style: TextStyle(
-        color: Colors.white,
+        color: Color.fromARGB(255, 63, 150, 222),
         fontSize: 24,
         fontWeight: FontWeight.bold,
       ),
@@ -137,7 +137,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                       pushNotifications = value;
                     });
                   },
-                  activeColor: Color(0xFF1664F3),
+                  activeColor: Color.fromARGB(255, 63, 150, 222),
                 ),
                 SwitchListTile(
   title: Text(
@@ -151,7 +151,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
     themeNotifier.toggleTheme(); // change globalement
     setState(() {}); // pour reconstruire localement si nécessaire
   },
-  activeColor: Color(0xFF1664F3),
+  activeColor: Color.fromARGB(255, 63, 150, 222),
 ),
 
                 Container(

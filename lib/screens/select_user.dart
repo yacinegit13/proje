@@ -25,7 +25,18 @@ class _SelectUserTypeScreenState extends State<SelectUserTypeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: AnimatedContainer(
+      body:Container(
+  decoration: const BoxDecoration(
+    gradient: LinearGradient(
+      begin: Alignment.topCenter,     // Blanc en haut
+      end: Alignment.bottomCenter,    // Bleu en bas
+      colors: [
+        Color.fromRGBO(255, 255, 255, 1),      // Blanc
+        Color.fromARGB(255, 63, 150, 222),     // Bleu
+      ],
+    ),
+  ),
+      /* AnimatedContainer(
         duration: const Duration(seconds: 3),
         curve: Curves.easeInOut,
         decoration: BoxDecoration(
@@ -34,15 +45,15 @@ class _SelectUserTypeScreenState extends State<SelectUserTypeScreen> {
             end: Alignment.bottomRight,
             colors: isFirstColor
                 ? [
-                    const Color.fromARGB(255, 6, 26, 207),
+                    const Color.fromARGB(255, 63, 150, 222),
                     const Color.fromRGBO(255, 255, 255, 1),
                   ]
                 : [
                     const Color.fromRGBO(255, 255, 255, 1),
-                    const Color.fromARGB(255, 6, 26, 207),
+                    const Color.fromARGB(255, 63, 150, 222),
                   ],
           ),
-        ),
+        ),*/
         child: SafeArea(
           child: Column(
             children: [
@@ -54,25 +65,25 @@ class _SelectUserTypeScreenState extends State<SelectUserTypeScreen> {
     children: [
       Row(
         children: [
-          IconButton(
-            icon: const Icon(Icons.arrow_back, color: Colors.white),
+         /* IconButton(
+            icon: const Icon(Icons.arrow_back, color: Color.fromARGB(255, 63, 150, 222)),
             onPressed: () {
-              Navigator.pop(context);
+               Navigator.pushNamed(context, '/');
             },
-          ),
+          ),*/
           const SizedBox(width: 8),
           const Text(
             "Select User Type",
             style: TextStyle(
               fontSize: 28,
               fontWeight: FontWeight.bold,
-              color: Colors.white,
+              color: Color.fromARGB(255, 63, 150, 222),
             ),
           ),
         ],
       ),
       IconButton(
-        icon: const Icon(Icons.settings, color: Colors.white),
+        icon: const Icon(Icons.settings, color: Color.fromARGB(255, 63, 150, 222)),
         onPressed: () {
           Navigator.pushNamed(context, '/parametre');
           ScaffoldMessenger.of(context).showSnackBar(
@@ -121,7 +132,7 @@ class _SelectUserTypeScreenState extends State<SelectUserTypeScreen> {
                             Navigator.pushNamed(context, '/select');
                             break;
                           case 1:
-                            Navigator.pushNamed(context, '/select');
+                            Navigator.pushNamed(context, '/camera');
                             break;
                           case 2:
                             Navigator.pushNamed(context, '/start');

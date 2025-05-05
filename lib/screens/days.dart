@@ -1,15 +1,18 @@
 import 'package:flutter/material.dart';
 
 class SignLanguageDays extends StatelessWidget {
-  final Map<String, String> dayImages = {
-    'Monday': 'images/monday1.jpg',
+  final List<String> daysList = [
+   /* 'Monday': 'images/monday1.jpg',
     'Tuesday': 'images/tusday.PNG',
     'Wednesday': 'images/wedensday.PNG',
     'Thursday': 'images/thursday.PNG',
     'Friday': 'images/friday.jpg',
     'Saturday': 'images/saturday.jpg',
     'Sunday': 'images/sunday1.png',
-  };
+    'Weekend': 'images/sunday1.png',*/
+    'Saturday','Sunday','Monday','Thursday', 'Wednesday', 'Tuesday','Friday',
+    'Weekend'
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -23,19 +26,19 @@ class SignLanguageDays extends StatelessWidget {
             crossAxisSpacing: 10,
             mainAxisSpacing: 10,
           ),
-          itemCount: dayImages.length,
+          itemCount: daysList.length,
           itemBuilder: (context, index) {
-            String day = dayImages.keys.elementAt(index);
+            String day = daysList[index];
             return ElevatedButton(
               style: ElevatedButton.styleFrom(
                 backgroundColor: Colors.white,
                 foregroundColor: Colors.black,
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(12),
-                  side: BorderSide(color: Colors.blueAccent),
+                  side: BorderSide(color: Color.fromARGB(255, 63, 150, 222)),
                 ),
               ),
-              onPressed: () => _showDayDialog(context, dayImages[day]!, day),
+              onPressed: () => _showDayDialog(context, day),
               child: Text(
                 day,
                 style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
@@ -47,13 +50,13 @@ class SignLanguageDays extends StatelessWidget {
     );
   }
 
-  void _showDayDialog(BuildContext context, String imagePath, String day) {
+  void _showDayDialog(BuildContext context, String day) {
     showDialog(
       context: context,
       builder:
           (_) => AlertDialog(
             title: Text('Jour : $day'),
-            content: Image.asset(imagePath, fit: BoxFit.cover),
+            content: Image.asset('assets/days/$day.gif', fit: BoxFit.cover),
             actions: [
               TextButton(
                 onPressed: () => Navigator.pop(context),
@@ -64,3 +67,4 @@ class SignLanguageDays extends StatelessWidget {
     );
   }
 }
+

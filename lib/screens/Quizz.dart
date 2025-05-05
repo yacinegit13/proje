@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 //import 'generated/l10n.dart';
 
 
-const Color dark1 = Color(0xFF0F2EA8);
-const Color dark2 = Color(0xFF133FCC);
-const Color original = Color(0xFF1649F1);
-const Color light1 = Color(0xFF4F77F6);
-const Color light2 = Color(0xFFAFC7FF);
-const Color yellowTitle = Color(0xFFFFD700);
+const Color dark1 = Color.fromARGB(255, 252, 252, 252);
+const Color dark2 = Color.fromARGB(255, 251, 251, 251);
+const Color original = Color.fromARGB(255, 255, 255, 255);
+const Color light1 = Color.fromARGB(255, 255, 255, 255);
+const Color light2 = Color.fromARGB(255, 255, 255, 255);
+const Color yellowTitle =Color.fromARGB(255, 63, 150, 222);
 
 class StartPage extends StatelessWidget {
   const StartPage({super.key});
@@ -34,18 +35,18 @@ class StartPage extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               IconButton(
-                icon: const Icon(Icons.arrow_back, color: Colors.white),
+                icon: const Icon(Icons.arrow_back, color: Color.fromARGB(255, 63, 150, 222)),
                 onPressed: () {
           Navigator.pop(context);
                 },
               ),
               const Text(
-                /*S.of(context).introduction*/ "Introduction", // Affiche "Bienvenue", "Welcome" ou "مرحبا"
+                /*S.of(context).introduction*/ "     Introduction", // Affiche "Bienvenue", "Welcome" ou "مرحبا"
           
                 style: TextStyle(
           fontSize: 24,
           fontWeight: FontWeight.bold,
-          color: Colors.white,
+          color:Color.fromARGB(255, 63, 150, 222),
                 ),
               ),
             ],
@@ -65,9 +66,9 @@ class StartPage extends StatelessWidget {
                   "PLAYING THE GAME AND LEARN",
                   style: TextStyle(fontSize: 18, color: Colors.white),
                 ),
-                const SizedBox(height: 100),
-                Image.asset('images/PLAY.jpeg', height: 450),
-                const SizedBox(height: 100),
+                const SizedBox(height: 3),
+                Image.asset('images/PLAY.jpeg', height: 330),
+                const SizedBox(height: 3),
                 ElevatedButton(
                   onPressed: () {
                     Navigator.push(
@@ -76,7 +77,7 @@ class StartPage extends StatelessWidget {
                     );
                   },
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.red,
+                    backgroundColor: Color.fromARGB(255, 63, 150, 222),
                     padding: const EdgeInsets.symmetric(
                       horizontal: 40,
                       vertical: 15,
@@ -95,9 +96,169 @@ class StartPage extends StatelessWidget {
           ),
         ),
       ),
+
+
+
+
+
+      
+       bottomNavigationBar: Container(
+        height: 70,
+        decoration: BoxDecoration(
+          color: Colors.white,
+          boxShadow: [
+            BoxShadow(
+              color: Colors.grey.withOpacity(0.2),
+              spreadRadius: 2,
+              blurRadius: 8,
+            ),
+          ],
+        ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
+           _buildNavButton(
+              Icons.home_filled,
+              'Home',
+              isActive: false,
+               onPressed: () {
+                 Navigator.pushNamed(context, '/homme');
+              },
+            ),
+            _buildNavButton(
+              Icons.quiz,
+              'Quiz',
+              isActive: true,
+              onPressed: () {
+                
+              },
+            ),
+            _buildNavButton(
+              Icons.text_fields,
+              'Aa',
+              isActive: false,
+              onPressed: () {
+                 Navigator.pushNamed(context, '/coures');
+              },
+            ),
+            _buildNavButton(
+              Icons.person,
+              'Profile',
+              isActive: false,
+              onPressed: () {
+                Navigator.pushNamed(context, '/profilpage');
+              },
+            ),
+          ],
+        ),
+      ),
     );
   }
-}                   
+
+  // ignore: unused_element
+  Widget _buildCourseItemWithImage(
+    BuildContext context, {
+    required String title,
+    required double progress,
+    required String imagePath,
+    required VoidCallback onTap,
+    required bool imageOnLeft,
+    
+  }) {
+    final imageWidget = ClipRRect(
+      borderRadius: BorderRadius.circular(10),
+      child: Image.asset(imagePath, width: 60, height: 60, fit: BoxFit.cover),
+    );
+
+    final textContent = Expanded(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            title,
+            style: GoogleFonts.poppins(
+              fontSize: 22,
+              fontWeight: FontWeight.bold,
+              color:  Color.fromARGB(255, 63, 150, 222),
+            ),
+          ),
+          const SizedBox(height: 10),
+          /*LinearProgressIndicator(
+            value: progress,
+            backgroundColor: Colors.grey[200],
+            color: Color(0xFF1649F1),
+          ),*/
+          const SizedBox(height: 5),
+         /* Text(
+            'Completed ${(progress * 100).toInt()}%',
+            style: const TextStyle(color: Color(0xFF1649F1)),
+          ),*/
+        ],
+      ),
+    );
+
+    return InkWell(
+      onTap: onTap,
+      borderRadius: BorderRadius.circular(15),
+      child: Container(
+        padding: const EdgeInsets.all(16),
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(15),
+          border: Border.all(
+            color:  Color.fromARGB(255, 63, 150, 222), // تغيير لون الإطار هنا
+            width: 2, // سمك الإطار
+          ),
+          boxShadow: [
+            BoxShadow(color: Colors.grey.withOpacity(0.2), blurRadius: 5),
+          ],
+        ),
+        child: Row(
+          children: imageOnLeft
+              ? [imageWidget, const SizedBox(width: 16), textContent]
+              : [textContent, const SizedBox(width: 16), imageWidget],
+        ),
+      ),
+    );
+  }Widget _buildNavButton(
+    IconData icon,
+    String label, {
+    bool isActive = false,
+    VoidCallback? onPressed,
+  }) {
+    return Container(
+      decoration: BoxDecoration(
+         color: isActive ?  Color.fromARGB(255, 63, 150, 222) : Colors.white,
+        borderRadius: BorderRadius.circular(15),
+        border: Border.all(
+          color:  Color.fromARGB(255, 63, 150, 222), // الإطار باللون الأزرق
+          width: 2, // سمك الإطار
+        ),
+      ),
+      child: IconButton(
+        icon: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Icon(
+              icon,
+              color: isActive ? Colors.white :  Color.fromARGB(255, 63, 150, 222), // تغيير اللون إذا كان الزر نشطًا
+              size: 28,
+            ),
+            const SizedBox(height: 4),
+            Text(
+              label,
+              style: TextStyle(
+                color: isActive ? Colors.white :  Color.fromARGB(255, 63, 150, 222), // تغيير اللون إذا كان الزر نشطًا
+                fontSize: 12,
+              ),
+            ),
+          ],
+        ),
+        onPressed: onPressed,
+      ),
+    );
+  }
+}                 
 
 class Question {
   final String question;
@@ -238,7 +399,7 @@ class _QuizPageState extends State<QuizPage> {
   }
 
   Color getBorderColor(int index) {
-    if (!showResult) return Colors.grey;
+    if (!showResult) return Color.fromARGB(255, 63, 150, 222);
 
     if (index == questions[currentQuestion].correctIndex) {
       return Colors.green;
@@ -249,7 +410,7 @@ class _QuizPageState extends State<QuizPage> {
       return Colors.red;
     }
 
-    return Colors.grey;
+    return Color.fromARGB(255, 63, 150, 222);
   }
 
   Widget buildOption(int index) {
@@ -281,7 +442,7 @@ class _QuizPageState extends State<QuizPage> {
             setState(() => selectedIndex = value!);
           }
         },
-        activeColor: original,
+        activeColor: const Color.fromARGB(255, 63, 150, 222),
       ),
     );
   }
@@ -291,7 +452,7 @@ class _QuizPageState extends State<QuizPage> {
     final question = questions[currentQuestion];
 
     return Scaffold(
-      backgroundColor: const Color(0xFFFDF3E7),
+      backgroundColor: const Color.fromARGB(255, 255, 255, 255),
       body: SafeArea(
         child: AnimatedSwitcher(
           duration: const Duration(milliseconds: 500),
@@ -310,12 +471,12 @@ class _QuizPageState extends State<QuizPage> {
                     Container(
                       padding: const EdgeInsets.all(6),
                       decoration: BoxDecoration(
-                        color: original,
+                        color: const Color.fromARGB(255, 255, 255, 255),
                         borderRadius: BorderRadius.circular(12),
                       ),
                       child: Text(
                         "Score: $score/${questions.length}",
-                        style: const TextStyle(color: Colors.white),
+                        style: const TextStyle(color: Color.fromARGB(255, 63, 150, 222)),
                       ),
                     ),
                   ],
@@ -325,9 +486,9 @@ class _QuizPageState extends State<QuizPage> {
                   child: Container(
                     padding: const EdgeInsets.all(16),
                     decoration: BoxDecoration(
-                      border: Border.all(color: original, width: 2),
+                      border: Border.all(color: const Color.fromARGB(255, 63, 150, 222), width: 2),
                       borderRadius: BorderRadius.circular(20),
-                      color: Colors.white,
+                      color: const Color.fromARGB(221, 236, 206, 175),
                     ),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -351,7 +512,7 @@ class _QuizPageState extends State<QuizPage> {
                 ElevatedButton(
                   onPressed: selectedIndex != -1 || showResult ? onNext : null,
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: original,
+                    backgroundColor: const Color.fromARGB(255, 63, 150, 222),
                     minimumSize: const Size(double.infinity, 50),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10),
@@ -361,7 +522,7 @@ class _QuizPageState extends State<QuizPage> {
                     currentQuestion == questions.length - 1 && showResult
                         ? "Finish"
                         : "Next",
-                    style: const TextStyle(fontSize: 18, color: Colors.white),
+                    style: const TextStyle(fontSize: 18, color: Color.fromARGB(255, 255, 255, 255)),
                   ),
                 ),
               ],

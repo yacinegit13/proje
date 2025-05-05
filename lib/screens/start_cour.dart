@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+/*import 'package:flutter/material.dart';
 import 'package:projet_signe/main.dart';
 
 class WelcomeScreen extends StatelessWidget {
@@ -113,6 +113,112 @@ class WelcomeScreen extends StatelessWidget {
                           'Get Started',
                           style: TextStyle(fontSize: 20, color: Colors.white),
                         ),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}*/
+import 'package:flutter/material.dart';
+import 'package:projet_signe/main.dart';
+
+class WelcomeScreen extends StatelessWidget {
+  const WelcomeScreen({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: themeNotifier.value ?   Colors.black : Colors.white,
+        elevation: 0,
+         leading: IconButton(
+    icon: Icon(Icons.arrow_back, color:Color.fromARGB(255, 63, 150, 222)),
+   onPressed: () {
+                 Navigator.pushNamed(context, '/selectuser');
+              },
+  ),
+        actions: [
+          Padding(
+            padding: const EdgeInsets.only(right: 16.0),
+           /* child: TextButton(
+              onPressed: () {Navigator.pushNamed(context, '/homme');},
+              child: const Text(
+                'Skip',
+                style: TextStyle(
+                  color: Color(0xFF1649F1),
+                  fontSize: 16,
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
+            ),*/
+          ),
+        ],
+      ),
+      body: SafeArea(
+        child: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.all(24.0),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Container(
+                  height: 250,
+                  width: double.infinity,
+                  child: Image.asset(
+                    'images/ZINEB 4.jpg',
+                    fit: BoxFit.contain,
+                  ),
+                ),
+                const SizedBox(height: 32),
+                const Text(
+                  'Start your journey with sign language',
+                  style: TextStyle(
+                    fontSize: 24,
+                    fontWeight: FontWeight.bold,
+                    color: Color.fromARGB(255, 63, 150, 222),
+                  ),
+                  textAlign: TextAlign.center,
+                ),
+                const SizedBox(height: 16),
+                const Text(
+                  'Learn to communicate beyond spoken words.\n'
+                  'Explore the world of sign language and connect\n'
+                  'with millions in a meaningful ,unique way.',
+                  style: TextStyle(fontSize: 16, color: Colors.grey, height: 1.5),
+                  textAlign: TextAlign.center,
+                ),
+                const SizedBox(height: 32),
+                SizedBox(
+                  width: double.infinity,
+                  child: Column(
+                    children: [
+                     
+                      SizedBox(
+                        height: 40,
+                        width: 400,
+                        child:ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor:  Color.fromARGB(255, 63, 150, 222),
+                        //  padding: const EdgeInsets.symmetric(vertical: 25),
+                           padding:  EdgeInsets.zero,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(20),
+                          ),
+                        ),
+                        onPressed: () {
+                          Navigator.pushNamed(context, '/homme');
+                        },
+                        child: const Text(
+                          'Get Started',
+                          style: TextStyle(fontSize: 15, color: Colors.white),
+                        ),
+                      ),
                       ),
                     ],
                   ),

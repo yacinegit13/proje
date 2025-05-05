@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/foundation.dart'; // Import pour kDebugMode
+import 'package:flutter_tts/flutter_tts.dart';
 import 'package:projet_signe/main.dart';
 import 'package:projet_signe/screens/animation.dart';
 import 'package:speech_to_text/speech_to_text.dart' as stt;
@@ -31,6 +32,12 @@ class _NewRecordingScreenState extends State<NewRecordingScreen> {
   late stt.SpeechToText _speech;
   bool _isListening = false;
   String _recognizedText = '';
+   FlutterTts flutterTts = FlutterTts();
+  // ignore: unused_field
+  final bool _isTtsEnabled = true;
+  // ignore: unused_field
+  String _selectedLanguage = 'en-US'; // valeur par défaut : anglais
+
 
   @override
   void initState() {
@@ -94,7 +101,8 @@ class _NewRecordingScreenState extends State<NewRecordingScreen> {
             listenFor: const Duration(seconds: 30),
             pauseFor: const Duration(seconds: 3),
             partialResults: true,
-            localeId: 'en-US',
+            localeId: _selectedLanguage,
+
             cancelOnError: true,
             listenMode: stt.ListenMode.confirmation,
           );
@@ -127,6 +135,12 @@ class _NewRecordingScreenState extends State<NewRecordingScreen> {
       }
     });
   }
+  // ignore: unused_element
+  void _initTts() async {
+    await flutterTts.setLanguage(_selectedLanguage);
+    await flutterTts.setSpeechRate(0.5);
+    await flutterTts.setPitch(1.0);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -146,11 +160,34 @@ class _NewRecordingScreenState extends State<NewRecordingScreen> {
         ),
         
         actions: [
-          IconButton(
+         /* IconButton(
             icon: const Icon(Icons.language, color: Colors.black),
             onPressed: () {},
           ),
-        ],
+        ],*/
+        PopupMenuButton<String>(
+    icon: const Icon(Icons.language, color: Colors.black),
+    onSelected: (String value) {
+      setState(() {
+        _selectedLanguage = value;
+      });
+    },
+    itemBuilder: (BuildContext context) => [
+      const PopupMenuItem(
+        value: 'en-US',
+        child: Text('🇺🇸 English'),
+      ),
+      const PopupMenuItem(
+        value: 'fr-FR',
+        child: Text('🇫🇷 Français'),
+      ),
+      const PopupMenuItem(
+        value: 'ar-SA',
+        child: Text('🇸🇦 عربي'),
+      ),
+    ],
+  ),
+],
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),

@@ -1,10 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:projet_signe/generated/l10n.dart';
+
 
 class VegetablesPage extends StatelessWidget {
   final List<String> vegetablesList = [
     'Cabbage',
-    'Green Beans',
-    'Lettuce',
+    'Green pepper',
+    'Cucumber',
+    'Eggplant',
+    'Garlic',
+    'Green squash',
+    'Mushroom',
+    'Tomato',
     'Onion',
     'Potato',
   ];
@@ -13,8 +20,8 @@ class VegetablesPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Sign Language Vegetables"),
-        backgroundColor: Colors.green,
+        title:  Text(S.of(context).vegetables),
+        backgroundColor: Color.fromARGB(255, 255, 255, 255),
       ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
@@ -33,7 +40,7 @@ class VegetablesPage extends StatelessWidget {
                 foregroundColor: Colors.black,
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(12),
-                  side: const BorderSide(color: Colors.green),
+                  side: const BorderSide(color: Color.fromARGB(255, 63, 150, 222)),
                 ),
               ),
               onPressed: () => _showSignDialog(context, veg),
@@ -51,14 +58,14 @@ class VegetablesPage extends StatelessWidget {
 
   void _showSignDialog(BuildContext context, String vegName) {
     // اسم الملف يجب أن يطابق الاسم مع استبدال المسافات بـ "_" أو بدون مسافات حسب التسمية
-    String imageName = vegName.replaceAll(' ', '_');
+    //String imageName = vegName.replaceAll(' ', '_');
 
     showDialog(
       context: context,
       builder: (_) => AlertDialog(
         title: Text(vegName),
         content: Image.asset(
-          'assets/vegetables/$imageName.png', // تأكد من الأسماء داخل مجلد الصور
+          'assets/vegetables/$vegName.gif', // تأكد من الأسماء داخل مجلد الصور
           fit: BoxFit.cover,
         ),
         actions: [

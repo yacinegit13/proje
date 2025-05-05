@@ -1,3 +1,4 @@
+import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:projet_signe/screens/Mycours.dart';
 import 'package:projet_signe/screens/Quizz.dart';
@@ -5,14 +6,20 @@ import 'package:projet_signe/screens/Quizz.dart';
 import 'package:projet_signe/screens/SettingsScreen.dart';
 import 'package:projet_signe/screens/about_us.dart';
 import 'package:projet_signe/screens/alphabet_cour.dart';
+import 'package:projet_signe/screens/animal.dart';
 import 'package:projet_signe/screens/animation.dart';
+import 'package:projet_signe/screens/camera.dart';
 import 'package:projet_signe/screens/change_password_page.dart';
 import 'package:projet_signe/screens/chatboot.dart';
+import 'package:projet_signe/screens/couleur.dart';
+import 'package:projet_signe/screens/pronouns.dart';
 import 'package:projet_signe/screens/days.dart';
 import 'package:projet_signe/screens/edit_profile.dart';
 import 'package:projet_signe/screens/forget_passwored.dart';
+import 'package:projet_signe/screens/fruit.dart';
 import 'package:projet_signe/screens/homme_coures.dart';
 import 'package:projet_signe/screens/la_premiere.dart';
+import 'package:projet_signe/screens/legum.dart';
 import 'package:projet_signe/screens/mois.dart';
 import 'package:projet_signe/screens/nomber.dart';
 import 'package:projet_signe/screens/start_cour.dart';
@@ -29,6 +36,11 @@ import 'screens/seconed_page.dart';
 import 'screens/select_user.dart';
 import 'screens/select.dart';
 import 'screens/theme_notifier.dart';
+// ignore: unused_import
+import 'package:flutter_localizations/flutter_localizations.dart';
+// ignore: unused_import
+import 'generated/l10n.dart';
+
 //import 'package:flutter_localizations/flutter_localizations.dart';
 //import 'generated/l10n.dart'; // On le génère ensuite
 
@@ -36,6 +48,8 @@ import 'screens/theme_notifier.dart';
 final ThemeNotifier themeNotifier = ThemeNotifier();
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  final cameras = await availableCameras();
+  final firstCamera = cameras.first;
    try {
     await Supabase.initialize(
       url: 'VOTRE_URL_SUPABASE',
@@ -57,11 +71,12 @@ void main() async {
     anonKey:
         'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJwZHZ6YmR5Y2poZXR3ZmNxaHpqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDE0NjIwMzksImV4cCI6MjA1NzAzODAzOX0.uLXYVTaRB_D8oWi4ifLjdbucOy8PF5qIsWYfG8ork3g',
   );*/
-  runApp(MyApp());
+  runApp(MyApp(camera: firstCamera));
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  final CameraDescription camera;
+  const MyApp({Key? key, required this.camera}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -70,24 +85,16 @@ class MyApp extends StatelessWidget {
       builder: (context, isDarkMode, _) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-     /* theme: isDarkMode ? ThemeData.dark() : ThemeData.light(),
+      theme: themeNotifier.value ? ThemeData.dark() : ThemeData.light(),
         //scaffoldBackgroundColor: AppColors.background,
-        localizationsDelegates: const [
-           // S.delegate,
-            GlobalMaterialLocalizations.delegate,
-            GlobalWidgetsLocalizations.delegate,
-            GlobalCupertinoLocalizations.delegate,
-          ],
-          supportedLocales: S.delegate.supportedLocales,
-          localeResolutionCallback: (locale, supportedLocales) {
-            for (var supportedLocale in supportedLocales) {
-              if (supportedLocale.languageCode == locale?.languageCode) {
-                return supportedLocale;
-              }
-            }
-            return supportedLocales.first;
-          },
-      */
+        locale: const Locale('en'),
+        localizationsDelegates:const [
+          S.delegate,
+    GlobalMaterialLocalizations.delegate,
+    GlobalWidgetsLocalizations.delegate,
+    GlobalCupertinoLocalizations.delegate,
+  ],
+  supportedLocales:S.delegate.supportedLocales,
       initialRoute: '/',
       routes: {
         '/': (context) => SplashScreen(),
@@ -97,11 +104,11 @@ class MyApp extends StatelessWidget {
         '/signup': (context) => SignUp(),
         '/profilpage':
             (context) =>
-                ProfileScreen(username: 'belaidi', email: 'zineb@gmail.com'),
+                ProfileScreen(username: 'User', email: 'User@gmail.com'),
         '/selectuser': (context) => SelectUserTypeScreen(),
         '/select': (context) => InputModeSelectionScreen(),
         '/voice': (context) => NewRecordingScreen(),
-
+        '/camera': (context) => CameraPage(camera: camera),
         '/animation': (context) => MainScreen(translatedText: 'taxt'),
         '/text': (context) => TranslationScreen(),
         '/start': (context) => WelcomeScreen(),
@@ -121,9 +128,28 @@ class MyApp extends StatelessWidget {
         '/chat': (context) => ChatScreen(),
         '/nomber': (context) => NumbersPage(),
         '/moi': (context) => MonthsPage(),
+        '/legume': (context) => VegetablesPage(),
+        '/fruite': (context) => FruitsPage(),
+        '/animal': (context) => AnimalsPage(),
+        '/color': (context) => ColorsPage(),
+        '/Pronouns': (context) => PronounsPage(),
+
       },
     );
   }
      );
 }
 }
+
+
+
+
+
+
+
+/*{
+  "@@locale": "ar",
+  "welcome": "مرحبا",
+  "startGame": "ابدأ اللعبة",
+  "introduction": "مقدمة"
+}*/ 

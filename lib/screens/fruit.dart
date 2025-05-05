@@ -2,9 +2,12 @@ import 'package:flutter/material.dart';
 
 class FruitsPage extends StatelessWidget {
   final List<String> fruitsList = [
-    'Apple', 'Bananas', 'Grapes',
-    'Melon', 'Orange', 'Peach',
-    'Pear', 'Pineapple',
+    'Apple', 'Banana', 'Orange', 'Peach',
+    'Pear', 'Pineapple','Avocado',
+    'Cherry','Green grapes',
+    'Lemon','Watermelon','Lime',
+    'Pineapple','Pomegranate','Raspberry',
+    'Strawberry'
   ];
 
   @override
@@ -12,7 +15,7 @@ class FruitsPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text("Sign Language Fruits"),
-        backgroundColor: Colors.deepOrange,
+        backgroundColor: Color.fromARGB(255, 255, 255, 255),
       ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
@@ -31,7 +34,7 @@ class FruitsPage extends StatelessWidget {
                 foregroundColor: Colors.black,
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(12),
-                  side: const BorderSide(color: Colors.deepOrange),
+                  side: const BorderSide(color: Color.fromARGB(255, 63, 150, 222)),
                 ),
               ),
               onPressed: () => _showSignDialog(context, fruit),
@@ -53,7 +56,7 @@ class FruitsPage extends StatelessWidget {
       builder: (_) => AlertDialog(
         title: Text(fruit),
         content: Image.asset(
-          'assets/fruits/$fruit.png', // تأكد من وجود الصورة بالاسم الصحيح
+          'assets/fruits/$fruit.gif', // تأكد من وجود الصورة بالاسم الصحيح
           fit: BoxFit.cover,
         ),
         actions: [

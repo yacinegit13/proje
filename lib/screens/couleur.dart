@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 class ColorsPage extends StatelessWidget {
   final List<String> colorNames = [
     'Black', 'Blue', 'Brown', 'Gray',
-    'Green', 'Orange', 'Pink', 'Purple',
-    'Red', 'White', 'Yellow',
+    'Green', 'Orange 1', 'Pink', 'Tan',
+    'Red', 'White', 'Yellow','Siver','Gold','Color',
   ];
 
   @override
@@ -12,7 +12,7 @@ class ColorsPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text("Sign Language Colors"),
-        backgroundColor: Colors.purple,
+        backgroundColor: Color.fromARGB(255, 255, 255, 255),
       ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
@@ -31,7 +31,7 @@ class ColorsPage extends StatelessWidget {
                 foregroundColor: Colors.black,
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(12),
-                  side: const BorderSide(color: Colors.deepPurple),
+                  side: const BorderSide(color: Color.fromARGB(255, 63, 150, 222)),
                 ),
               ),
               onPressed: () => _showSignDialog(context, color),
@@ -53,7 +53,7 @@ class ColorsPage extends StatelessWidget {
       builder: (_) => AlertDialog(
         title: Text(colorName),
         content: Image.asset(
-          'assets/colors/$colorName.png', // ضع الصور هنا بهذا المسار
+          'assets/colors/$colorName.gif', // ضع الصور هنا بهذا المسار
           fit: BoxFit.cover,
         ),
         actions: [

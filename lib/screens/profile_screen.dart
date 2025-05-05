@@ -53,7 +53,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: const Text("Choose a profile picture"),
+          title: const Text("Choose a profile picture",selectionColor:  Color.fromARGB(255, 63, 150, 222)),
           content: SizedBox(
             width: double.maxFinite,
             child: GridView.builder(
@@ -95,15 +95,15 @@ class _ProfileScreenState extends State<ProfileScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Profile",style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),),
-        backgroundColor: const Color(0xFF1649F1),
+        title: const Text("Profile",style: TextStyle(color:  Color.fromARGB(255, 63, 150, 222), fontWeight: FontWeight.bold),),
+        backgroundColor:  Color.fromARGB(255, 255, 255, 255),
         leading: IconButton(
-          icon: const Icon(Icons.arrow_back, color: Colors.white),
+          icon: const Icon(Icons.arrow_back, color:  Color.fromARGB(255, 63, 150, 222)),
           onPressed: () => Navigator.pop(context),
         ),
         actions: [
           IconButton(
-            icon: const Icon(Icons.settings, color: Colors.white),
+            icon: const Icon(Icons.settings, color:  Color.fromARGB(255, 63, 150, 222)),
             onPressed: () {
               Navigator.pushNamed(context, '/parametre');
               ScaffoldMessenger.of(
@@ -127,7 +127,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 ),
                 Container(
                   decoration: const BoxDecoration(
-                    color: Colors.blue,
+                    color:  Color.fromARGB(255, 63, 150, 222),
                     shape: BoxShape.circle,
                   ),
                   child: IconButton(
@@ -189,6 +189,94 @@ class _ProfileScreenState extends State<ProfileScreen> {
             ),
           ],
         ),
+      ),
+      bottomNavigationBar: Container(
+        height: 70,
+        decoration: BoxDecoration(
+          color: Colors.white,
+          boxShadow: [
+            BoxShadow(
+              color: Colors.grey.withOpacity(0.2),
+              spreadRadius: 2,
+              blurRadius: 8,
+            ),
+          ],
+        ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
+            _buildNavButton(
+              Icons.home_filled,
+              'Home',
+              isActive: false,
+               onPressed: () {
+                 Navigator.pushNamed(context, '/homme');
+              },
+            ),
+            _buildNavButton(
+              Icons.quiz,
+              'Quiz',
+              isActive: false,
+              onPressed: () {
+                 Navigator.pushNamed(context, '/start_page_quizz');
+              },
+            ),
+            _buildNavButton(
+              Icons.text_fields,
+              'Aa',
+              isActive: false,
+              onPressed: (){
+                 Navigator.pushNamed(context, '/coures');
+              },
+            ),
+            _buildNavButton(
+              Icons.person,
+              'Profile',
+              isActive: true,
+              onPressed: () {
+                
+              },
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+   Widget _buildNavButton(
+    IconData icon,
+    String label, {
+    bool isActive = false,
+    VoidCallback? onPressed,
+  }) {
+    return Container(
+      decoration: BoxDecoration(
+         color: isActive ?  Color.fromARGB(255, 63, 150, 222) : Colors.white,
+        borderRadius: BorderRadius.circular(15),
+        border: Border.all(
+          color:  Color.fromARGB(255, 63, 150, 222), // الإطار باللون الأزرق
+          width: 2, // سمك الإطار
+        ),
+      ),
+      child: IconButton(
+        icon: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Icon(
+              icon,
+              color: isActive ? Colors.white :  Color.fromARGB(255, 63, 150, 222), // تغيير اللون إذا كان الزر نشطًا
+              size: 28,
+            ),
+            const SizedBox(height: 4),
+            Text(
+              label,
+              style: TextStyle(
+                color: isActive ? Colors.white :  Color.fromARGB(255, 63, 150, 222), // تغيير اللون إذا كان الزر نشطًا
+                fontSize: 12,
+              ),
+            ),
+          ],
+        ),
+        onPressed: onPressed,
       ),
     );
   }

@@ -27,7 +27,7 @@ class NumbersPage extends StatelessWidget {
                 foregroundColor: Colors.black,
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(12),
-                  side: BorderSide(color: Colors.blueAccent),
+                  side: BorderSide(color: Color.fromARGB(255, 63, 150, 222)),
                 ),
               ),
               onPressed: () => _showSignDialog(context, number),
@@ -48,7 +48,7 @@ class NumbersPage extends StatelessWidget {
       builder:
           (_) => AlertDialog(
             title: Text('number $number'),
-            content: Image.asset('assets/days/$number.png', fit: BoxFit.cover),
+            content: Image.asset('assets/numbers/$number.png', fit: BoxFit.cover),
             actions: [
               TextButton(
                 onPressed: () => Navigator.pop(context),
