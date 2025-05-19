@@ -14,7 +14,7 @@ class InputModeSelectionScreen extends StatelessWidget {
             Container(
               padding: const EdgeInsets.all(10),
               decoration: BoxDecoration(
-                color: Colors.pink[100],
+                color: Color.fromARGB(255, 63, 150, 222),
                 borderRadius: BorderRadius.circular(10),
               ),
               child: const Text(
@@ -29,7 +29,7 @@ class InputModeSelectionScreen extends StatelessWidget {
                 _buildOptionButton(
                   imagePath: "images/photo.png",
                   buttonText: "Speak",
-                  color: Colors.green,
+                  color: Color.fromARGB(255, 63, 150, 222),
                   onPressed: () {
                     Navigator.pushNamed(context, '/voice');
                     print("Speak Mode Selected");
@@ -39,7 +39,7 @@ class InputModeSelectionScreen extends StatelessWidget {
                 _buildOptionButton(
                   imagePath: "images/photo2.webp",
                   buttonText: "Text",
-                  color: Colors.blue,
+                  color: Color.fromARGB(255, 63, 150, 222),
                   onPressed: () {
                     Navigator.pushNamed(context, '/text');
                     print("Text Mode Selected");

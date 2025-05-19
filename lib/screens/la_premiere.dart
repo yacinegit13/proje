@@ -68,7 +68,7 @@ class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderSt
 
     _controller = AnimationController(
       vsync: this,
-      duration: Duration(seconds: 5),
+      duration: Duration(seconds: 3),
     );
 
     _fadeAnimation = CurvedAnimation(
@@ -87,7 +87,7 @@ class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderSt
     _controller.forward();
 
     // Rediriger après 4 secondes
-    Timer(Duration(seconds: 4), () {
+    Timer(Duration(seconds: 6), () {
       Navigator.of(context).pushReplacementNamed('/logorsign');
     });
   }

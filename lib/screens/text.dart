@@ -19,18 +19,18 @@ class _TranslationScreenState extends State<TranslationScreen> {
           decoration: BoxDecoration(
             gradient: LinearGradient(
               colors: [
-                Color.fromARGB(255, 15, 39, 252),
-                Color.fromARGB(255, 0, 191, 255),
+                Color.fromARGB(255, 255, 255, 255),
+                Color.fromARGB(255, 255, 255, 255),
               ],
               begin: Alignment.topLeft,
               end: Alignment.bottomRight,
             ),
           ),
         ),
-        title: Text("Sign language translation", style: TextStyle(color: Colors.white)),
+        title: Text("Sign language translation", style: TextStyle(color: Color.fromARGB(255, 63, 150, 222))),
         centerTitle: true,
         leading: IconButton(
-          icon: Icon(Icons.arrow_back, color: Colors.white),
+          icon: Icon(Icons.arrow_back, color: Color.fromARGB(255, 63, 150, 222)),
           onPressed: () => Navigator.pop(context),
         ),
       ),
@@ -44,8 +44,8 @@ class _TranslationScreenState extends State<TranslationScreen> {
               decoration: BoxDecoration(
                 gradient: LinearGradient(
                   colors: [
-                    Color.fromARGB(255, 15, 39, 252),
-                    Color.fromARGB(255, 0, 191, 255),
+                    Color.fromARGB(255, 255, 255, 255),
+                    Color.fromARGB(255, 255, 255, 255),
                   ],
                   begin: Alignment.topLeft,
                   end: Alignment.bottomRight,
@@ -57,7 +57,7 @@ class _TranslationScreenState extends State<TranslationScreen> {
                 style: TextStyle(
                   fontSize: 28,
                   fontWeight: FontWeight.bold,
-                  color: Colors.white,
+                  color: Color.fromARGB(255, 63, 150, 222),
                 ),
               ),
             ),
@@ -78,8 +78,8 @@ class _TranslationScreenState extends State<TranslationScreen> {
               decoration: BoxDecoration(
                 gradient: LinearGradient(
                   colors: [
-                    Color.fromARGB(255, 15, 39, 252),
-                    Color.fromARGB(255, 0, 191, 255),
+                    Color.fromARGB(255, 63, 150, 222),
+                    Color.fromARGB(255, 63, 150, 222)
                   ],
                   begin: Alignment.topLeft,
                   end: Alignment.bottomRight,

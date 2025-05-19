@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 class AnimalsPage extends StatelessWidget {
   final List<String> animalsList = [
-    'Cat','Alligator','Animals',
+    "cat",'Alligator','Animals',
     'Bat','Bear','Bird',
     'Bluefish','Cheetah','Chicken',
      'Deer', 'Elephant','Fish','Fly','Fox',

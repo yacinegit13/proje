@@ -91,25 +91,25 @@ class _ChatScreenState extends State<ChatScreen> {
           decoration: BoxDecoration(
             gradient: LinearGradient(
               colors: [
-                Color.fromARGB(255, 15, 39, 252), // Bleu intense
-                Color.fromARGB(255, 0, 191, 255), // Bleu clair
+                Color.fromRGBO(255, 255, 255, 1), // Bleu intense
+                Color.fromARGB(255, 255, 255, 255)// Bleu clair
               ],
               begin: Alignment.topLeft,
               end: Alignment.bottomRight,
             ),
           ),
         ),
-        title: Text("AI Chat Bot", style: TextStyle(color: Colors.white)),
+        title: Text("AI Chat Bot", style: TextStyle(color: Color.fromARGB(255, 63, 150, 222))),
         actions: [
           IconButton(
             onPressed: _toggleTts,
             icon: Icon(
               _isTtsEnabled ? Icons.volume_up : Icons.volume_off,
-              color: Colors.white,
+              color: Color.fromARGB(255, 63, 150, 222),
             ),
           ),
           PopupMenuButton<String>(
-            icon: Icon(Icons.language),
+            icon: Icon(Icons.language,color: Color.fromARGB(255, 63, 150, 222)),
             onSelected: (String lang) {
               setState(() {
                 _selectedLanguage = lang;
@@ -134,7 +134,7 @@ class _ChatScreenState extends State<ChatScreen> {
         ],
 
         leading: IconButton(
-          icon: Icon(Icons.arrow_back, color: Colors.white),
+          icon: Icon(Icons.arrow_back, color: Color.fromARGB(255, 63, 150, 222)),
           onPressed: () {
             Navigator.of(
               context,
@@ -179,7 +179,7 @@ class _ChatScreenState extends State<ChatScreen> {
                             horizontal: 10,
                           ),
                           decoration: BoxDecoration(
-                            color: isUser ? Colors.blue : Colors.grey[300],
+                            color: isUser ?  Color.fromARGB(255, 63, 150, 222) : Colors.grey[300],
                             borderRadius: BorderRadius.circular(10),
                           ),
                           child: messageText,

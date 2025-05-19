@@ -151,12 +151,12 @@ class _NewRecordingScreenState extends State<NewRecordingScreen> {
         elevation: 0,
         //leading: const BackButton(color: Colors.black),
         leading: IconButton(
-          icon: const Icon(Icons.arrow_back, color: Colors.black),
+          icon: const Icon(Icons.arrow_back, color: Color.fromARGB(255, 63, 150, 222)),
           onPressed: () { Navigator.pop(context);}, // <- Le bouton ne fait rien
         ),
         title: const Text(
           'New Recording',
-          style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
+          style: TextStyle(color: Color.fromARGB(255, 63, 150, 222), fontWeight: FontWeight.bold),
         ),
         
         actions: [
@@ -166,7 +166,7 @@ class _NewRecordingScreenState extends State<NewRecordingScreen> {
           ),
         ],*/
         PopupMenuButton<String>(
-    icon: const Icon(Icons.language, color: Colors.black),
+    icon: const Icon(Icons.language, color: Color.fromARGB(255, 63, 150, 222)),
     onSelected: (String value) {
       setState(() {
         _selectedLanguage = value;
@@ -198,7 +198,7 @@ class _NewRecordingScreenState extends State<NewRecordingScreen> {
               width: double.infinity,
               padding: const EdgeInsets.all(16.0),
               decoration: BoxDecoration(
-                color: Colors.blue,
+                color: Color.fromARGB(255, 63, 150, 222),
                 borderRadius: BorderRadius.circular(12.0),
               ),
               child: Column(
@@ -249,7 +249,7 @@ class _NewRecordingScreenState extends State<NewRecordingScreen> {
                         child: IconButton(
                           icon: const Icon(
                             Icons.emoji_emotions_outlined,
-                            color: Colors.blue,
+                            color: Color.fromARGB(255, 63, 150, 222),
                             size: 20,
                           ),
                           padding: EdgeInsets.zero,
@@ -323,7 +323,7 @@ class _NewRecordingScreenState extends State<NewRecordingScreen> {
             Container(
               width: double.infinity,
               decoration: BoxDecoration(
-                color: Colors.blue,
+                color: Color.fromARGB(255, 63, 150, 222),
                 borderRadius: BorderRadius.circular(12),
               ),
               child: Material(
@@ -350,7 +350,7 @@ class _NewRecordingScreenState extends State<NewRecordingScreen> {
                       child: Text(
                         'Translate',
                         style: TextStyle(
-                          color: Colors.black,
+                          color: Colors.white,
                           fontWeight: FontWeight.bold,
                           fontSize: 18,
                         ),
