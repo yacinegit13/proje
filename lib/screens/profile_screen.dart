@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:projet_signe/component/my_buttons.dart';
 import 'package:projet_signe/component/textfield.dart';
+import 'package:projet_signe/main.dart';
 
 class ProfileScreen extends StatefulWidget {
   final String username;
@@ -96,7 +97,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
     return Scaffold(
       appBar: AppBar(
         title: const Text("Profile",style: TextStyle(color:  Color.fromARGB(255, 63, 150, 222), fontWeight: FontWeight.bold),),
-        backgroundColor:  Color.fromARGB(255, 255, 255, 255),
+        backgroundColor:  themeNotifier.value ? Colors.black : Colors.white,
         leading: IconButton(
           icon: const Icon(Icons.arrow_back, color:  Color.fromARGB(255, 63, 150, 222)),
           onPressed: () => Navigator.pop(context),
@@ -168,8 +169,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
               readOnly: true,
             ),
 
-            const SizedBox(height: 20),
-            CustomButton(
+            const SizedBox(height: 14),
+            SizedBox(
+  width: 200, // 👈 عرض الزر
+  height: 40, 
+ 
+          child:CustomButton(
               text: "saved",
               onPressed: () {
                 ScaffoldMessenger.of(context).showSnackBar(
@@ -179,24 +184,29 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 Navigator.pushNamed(context, '/selectuser');
               },
             ),
+            )
 
-            const SizedBox(height: 20),
-            CustomButton(
+            ,const SizedBox(height: 14),
+            SizedBox(
+  width: 200, // 👈 عرض الزر
+  height: 40, 
+  child: CustomButton(
               text: "Log Out",
               // ignore: avoid_print
               onPressed: () => print("Logged Out"),
               color: Colors.red,
             ),
+            ),
           ],
         ),
       ),
-      bottomNavigationBar: Container(
+     /* bottomNavigationBar: Container(
         height: 70,
         decoration: BoxDecoration(
-          color: Colors.white,
+          color: themeNotifier.value ? Colors.black : Colors.white,
           boxShadow: [
             BoxShadow(
-              color: Colors.grey.withOpacity(0.2),
+              color: themeNotifier.value ? Colors.grey.withOpacity(0.2) : Colors.black,
               spreadRadius: 2,
               blurRadius: 8,
             ),
@@ -239,10 +249,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
             ),
           ],
         ),
-      ),
+      ),*/
     );
   }
-   Widget _buildNavButton(
+  /* Widget _buildNavButton(
     IconData icon,
     String label, {
     bool isActive = false,
@@ -250,7 +260,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
   }) {
     return Container(
       decoration: BoxDecoration(
-         color: isActive ?  Color.fromARGB(255, 63, 150, 222) : Colors.white,
+         color: isActive ?  Color.fromARGB(255, 63, 150, 222) : themeNotifier.value ? Colors.black : Colors.white,
         borderRadius: BorderRadius.circular(15),
         border: Border.all(
           color:  Color.fromARGB(255, 63, 150, 222), // الإطار باللون الأزرق
@@ -279,5 +289,5 @@ class _ProfileScreenState extends State<ProfileScreen> {
         onPressed: onPressed,
       ),
     );
-  }
+  }*/
 }

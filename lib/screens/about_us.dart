@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:projet_signe/main.dart';
 
 
 class FhamniHomePage extends StatefulWidget {
@@ -21,10 +22,10 @@ class _FhamniHomePageState extends State<FhamniHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('About us', style: TextStyle(color: Colors.black)),
-        backgroundColor: Colors.white,
+        title: Text('About us', style: TextStyle(color: themeNotifier.value ? Colors.white : Colors.black,)),
+        backgroundColor: themeNotifier.value ? Colors.black : Colors.white,
         elevation: 0,
-        iconTheme: const IconThemeData(color: Colors.black),
+        iconTheme: IconThemeData(color: themeNotifier.value ? Colors.white : Colors.black,),
         actions: [
          /* IconButton(
             icon: const Icon(Icons.arrow_forward),
@@ -48,7 +49,7 @@ class _FhamniHomePageState extends State<FhamniHomePage> {
   Widget _buildCustomTabBar() {
     return Container(
       padding: const EdgeInsets.symmetric(vertical: 10),
-      color: Colors.grey[100],
+      color: themeNotifier.value ? Colors.black : Colors.grey[100],
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
@@ -168,7 +169,17 @@ class VolunteersTab extends StatelessWidget {
             style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
           ),
           const SizedBox(height: 25),
-          _buildVolunteerItem(
+           // Image centered in the screen
+          Center(
+            child: Image.asset(
+              'images/vvv.jpg', // chemin relatif dans le dossier assets
+              width: MediaQuery.of(context).size.width * 0.7,
+              fit: BoxFit.contain,
+            ),
+          ),
+
+          const SizedBox(height: 20),
+          /*_buildVolunteerItem(
             '• Deaf individuals and members of the Imkan Association for the Hearing Impaired.',
             context,
           ),
@@ -181,12 +192,13 @@ class VolunteersTab extends StatelessWidget {
           _buildVolunteerItem(
             '• A deaf team from Khadijah Mosque in Jeddah, led by Ms. Saleha Al-Ghamdi.',
             context,
-          ),
+          ),*/
         ],
       ),
     );
   }
 
+  // ignore: unused_element
   Widget _buildVolunteerItem(String text, BuildContext context) {
     return SizedBox(
       width: MediaQuery.of(context).size.width,

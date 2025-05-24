@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+/*import 'package:flutter/material.dart';
 import 'package:projet_signe/component/Background_Painter.dart';
 
 class SecondPage extends StatelessWidget {
@@ -105,4 +105,4 @@ class SecondPage extends StatelessWidget {
       ),
     );
   }
-}
+}*/

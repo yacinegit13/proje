@@ -1,15 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:projet_signe/main.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 //import 'generated/l10n.dart';
 
-
-const Color dark1 = Color.fromARGB(255, 252, 252, 252);
-const Color dark2 = Color.fromARGB(255, 251, 251, 251);
-const Color original = Color.fromARGB(255, 255, 255, 255);
-const Color light1 = Color.fromARGB(255, 255, 255, 255);
-const Color light2 = Color.fromARGB(255, 255, 255, 255);
-const Color yellowTitle =Color.fromARGB(255, 63, 150, 222);
 
 class StartPage extends StatelessWidget {
   const StartPage({super.key});
@@ -18,15 +12,10 @@ class StartPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment.topCenter,
-            end: Alignment.bottomCenter,
-            colors: [light2, light1, original, dark2, dark1],
-            stops: const [0.1, 0.3, 0.5, 0.7, 0.9],
-          ),
-        ),
+       color: themeNotifier.value ? Colors.black : Colors.white,
+
         child: SingleChildScrollView(
+          
           child: Center(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -53,18 +42,17 @@ class StartPage extends StatelessWidget {
           ),
           
                 const SizedBox(height: 20),
-                const Text(
+                Text(
                   "Quiz Sign Language",
                   style: TextStyle(
                     fontSize: 32,
                     fontWeight: FontWeight.bold,
-                    color: yellowTitle,
-                  ),
-                ),
+                    color:  Color.fromARGB(255, 63, 150, 222)
+                ),),
                 const SizedBox(height: 10),
-                const Text(
+                Text(
                   "PLAYING THE GAME AND LEARN",
-                  style: TextStyle(fontSize: 18, color: Colors.white),
+                  style: TextStyle(fontSize: 18, color: Color.fromARGB(255, 63, 150, 222)),
                 ),
                 const SizedBox(height: 3),
                 Image.asset('images/PLAY.jpeg', height: 330),
@@ -86,9 +74,9 @@ class StartPage extends StatelessWidget {
                       borderRadius: BorderRadius.circular(30),
                     ),
                   ),
-                  child: const Text(
+                  child: Text(
                     "START PLAYING",
-                    style: TextStyle(fontSize: 20, color: Colors.white),
+                    style: TextStyle(fontSize: 20, color: themeNotifier.value ? Colors.black : Colors.white),
                   ),
                 ),
               ],
@@ -105,7 +93,7 @@ class StartPage extends StatelessWidget {
        bottomNavigationBar: Container(
         height: 70,
         decoration: BoxDecoration(
-          color: Colors.white,
+          color: themeNotifier.value ? Colors.black : Colors.white,
           boxShadow: [
             BoxShadow(
               color: Colors.grey.withOpacity(0.2),
@@ -203,7 +191,7 @@ class StartPage extends StatelessWidget {
       child: Container(
         padding: const EdgeInsets.all(16),
         decoration: BoxDecoration(
-          color: Colors.white,
+          color: themeNotifier.value ? Colors.black : Colors.white,
           borderRadius: BorderRadius.circular(15),
           border: Border.all(
             color:  Color.fromARGB(255, 63, 150, 222), // تغيير لون الإطار هنا
@@ -228,7 +216,7 @@ class StartPage extends StatelessWidget {
   }) {
     return Container(
       decoration: BoxDecoration(
-         color: isActive ?  Color.fromARGB(255, 63, 150, 222) : Colors.white,
+         color: isActive ?  Color.fromARGB(255, 63, 150, 222) : themeNotifier.value ? Colors.black : Colors.white,
         borderRadius: BorderRadius.circular(15),
         border: Border.all(
           color:  Color.fromARGB(255, 63, 150, 222), // الإطار باللون الأزرق
@@ -452,7 +440,7 @@ class _QuizPageState extends State<QuizPage> {
     final question = questions[currentQuestion];
 
     return Scaffold(
-      backgroundColor: const Color.fromARGB(255, 255, 255, 255),
+      backgroundColor: themeNotifier.value ? Colors.black : Colors.white,
       body: SafeArea(
         child: AnimatedSwitcher(
           duration: const Duration(milliseconds: 500),
@@ -471,7 +459,7 @@ class _QuizPageState extends State<QuizPage> {
                     Container(
                       padding: const EdgeInsets.all(6),
                       decoration: BoxDecoration(
-                        color: const Color.fromARGB(255, 255, 255, 255),
+                        color: themeNotifier.value ? Colors.black : Colors.white,
                         borderRadius: BorderRadius.circular(12),
                       ),
                       child: Text(
@@ -488,7 +476,7 @@ class _QuizPageState extends State<QuizPage> {
                     decoration: BoxDecoration(
                       border: Border.all(color: const Color.fromARGB(255, 63, 150, 222), width: 2),
                       borderRadius: BorderRadius.circular(20),
-                      color: const Color.fromARGB(221, 236, 206, 175),
+                      color: themeNotifier.value ? Colors.black : const Color.fromARGB(221, 236, 206, 175),
                     ),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -522,7 +510,7 @@ class _QuizPageState extends State<QuizPage> {
                     currentQuestion == questions.length - 1 && showResult
                         ? "Finish"
                         : "Next",
-                    style: const TextStyle(fontSize: 18, color: Color.fromARGB(255, 255, 255, 255)),
+                    style: TextStyle(fontSize: 18, color: themeNotifier.value ? Colors.black : Colors.white,),
                   ),
                 ),
               ],

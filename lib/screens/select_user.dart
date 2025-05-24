@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:projet_signe/main.dart';
 
 class SelectUserTypeScreen extends StatefulWidget {
   const SelectUserTypeScreen({super.key});
@@ -26,13 +27,13 @@ class _SelectUserTypeScreenState extends State<SelectUserTypeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body:Container(
-  decoration: const BoxDecoration(
+  decoration: BoxDecoration(
     gradient: LinearGradient(
       begin: Alignment.topCenter,     // Blanc en haut
       end: Alignment.bottomCenter,    // Bleu en bas
       colors: [
-        Color.fromRGBO(255, 255, 255, 1),      // Blanc
-        Color.fromARGB(255, 63, 150, 222),     // Bleu
+        themeNotifier.value ? Colors.black : Color.fromRGBO(255, 255, 255, 1),      // Blanc
+        const Color.fromARGB(255, 63, 150, 222),     // Bleu
       ],
     ),
   ),

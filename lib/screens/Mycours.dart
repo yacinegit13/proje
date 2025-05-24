@@ -405,10 +405,10 @@ class MyCoursesScreen extends StatelessWidget {
       bottomNavigationBar: Container(
         height: 70,
         decoration: BoxDecoration(
-          color: Colors.white,
+          color: themeNotifier.value ? Colors.black : Colors.white,
           boxShadow: [
             BoxShadow(
-              color: Colors.grey.withOpacity(0.2),
+              color: themeNotifier.value ? Colors.grey.withOpacity(0.2) : Colors.black,
               spreadRadius: 2,
               blurRadius: 8,
             ),
@@ -502,14 +502,14 @@ class MyCoursesScreen extends StatelessWidget {
       child: Container(
         padding: const EdgeInsets.all(16),
         decoration: BoxDecoration(
-          color: Colors.white,
+          color: themeNotifier.value ? Colors.black : Colors.white,
           borderRadius: BorderRadius.circular(15),
           border: Border.all(
             color:  Color.fromARGB(255, 63, 150, 222), // تغيير لون الإطار هنا
             width: 2, // سمك الإطار
           ),
           boxShadow: [
-            BoxShadow(color: Colors.grey.withOpacity(0.2), blurRadius: 5),
+            BoxShadow(color:themeNotifier.value ? Colors.black : Colors.grey.withOpacity(0.2), blurRadius: 5),
           ],
         ),
         child: Row(
@@ -527,7 +527,7 @@ class MyCoursesScreen extends StatelessWidget {
   }) {
     return Container(
       decoration: BoxDecoration(
-         color: isActive ?  Color.fromARGB(255, 63, 150, 222) : Colors.white,
+         color: isActive ?  Color.fromARGB(255, 63, 150, 222) : themeNotifier.value ? Colors.black : Colors.white,
         borderRadius: BorderRadius.circular(15),
         border: Border.all(
           color:  Color.fromARGB(255, 63, 150, 222), // الإطار باللون الأزرق

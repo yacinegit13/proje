@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:projet_signe/main.dart';
 import 'package:projet_signe/screens/animation.dart';
 
 class TranslationScreen extends StatefulWidget {
@@ -19,8 +20,7 @@ class _TranslationScreenState extends State<TranslationScreen> {
           decoration: BoxDecoration(
             gradient: LinearGradient(
               colors: [
-                Color.fromARGB(255, 255, 255, 255),
-                Color.fromARGB(255, 255, 255, 255),
+               themeNotifier.value ? Colors.white : Colors.black,
               ],
               begin: Alignment.topLeft,
               end: Alignment.bottomRight,
@@ -44,8 +44,7 @@ class _TranslationScreenState extends State<TranslationScreen> {
               decoration: BoxDecoration(
                 gradient: LinearGradient(
                   colors: [
-                    Color.fromARGB(255, 255, 255, 255),
-                    Color.fromARGB(255, 255, 255, 255),
+                    themeNotifier.value ? Colors.white : Colors.black,
                   ],
                   begin: Alignment.topLeft,
                   end: Alignment.bottomRight,

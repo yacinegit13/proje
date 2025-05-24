@@ -147,7 +147,7 @@ class _NewRecordingScreenState extends State<NewRecordingScreen> {
     return Scaffold(
       backgroundColor: themeNotifier.value ?   Colors.black : Colors.white,
       appBar: AppBar(
-        backgroundColor: Colors.white,
+        backgroundColor: themeNotifier.value ? Colors.black : Colors.white,
         elevation: 0,
         //leading: const BackButton(color: Colors.black),
         leading: IconButton(

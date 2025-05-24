@@ -27,23 +27,23 @@ class _SettingsScreenState extends State<SettingsScreen> {
         children: [
           // HEADER
           Container(
-            color: Color.fromARGB(255, 255, 255, 255),
+            color: themeNotifier.value ? Colors.black : Colors.white,
             padding: EdgeInsets.only(top: 40, left: 16, right: 16, bottom: 20),
             child: Row(
   children: [
     IconButton(
-      icon: const Icon(Icons.arrow_back, color: Color.fromARGB(255, 63, 150, 222), size: 28),
+      icon: Icon(Icons.arrow_back, color: themeNotifier.value ? Colors.white : Colors.black, size: 28),
       onPressed: () {
         Navigator.of(context).pop(); // ou pushNamed si tu préfères
       },
     ),
     const SizedBox(width: 8),
-    const Icon(Icons.settings, color: Color.fromARGB(255, 63, 150, 222), size: 32),
+    Icon(Icons.settings, color: themeNotifier.value ? Colors.white : Colors.black, size: 32),
     const SizedBox(width: 8),
-    const Text(
+    Text(
       'Settings',
       style: TextStyle(
-        color: Color.fromARGB(255, 63, 150, 222),
+        color: themeNotifier.value ? Colors.white : Colors.black,
         fontSize: 24,
         fontWeight: FontWeight.bold,
       ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:projet_signe/main.dart';
 
 class ColorsPage extends StatelessWidget {
   final List<String> colorNames = [
@@ -12,7 +13,7 @@ class ColorsPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text("Sign Language Colors"),
-        backgroundColor: Color.fromARGB(255, 255, 255, 255),
+        backgroundColor: themeNotifier.value ? Colors.black : Colors.white,
       ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),

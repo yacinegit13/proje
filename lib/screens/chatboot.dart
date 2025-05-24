@@ -2,6 +2,7 @@ import 'package:projet_signe/Models/Message.dart';
 import 'package:flutter/material.dart';
 // ignore: unused_import
 import 'package:flutter_tts/flutter_tts.dart';
+import 'package:projet_signe/main.dart';
 import 'package:projet_signe/service/api_service.dart';
 
 class ChatScreen extends StatefulWidget {
@@ -91,8 +92,7 @@ class _ChatScreenState extends State<ChatScreen> {
           decoration: BoxDecoration(
             gradient: LinearGradient(
               colors: [
-                Color.fromRGBO(255, 255, 255, 1), // Bleu intense
-                Color.fromARGB(255, 255, 255, 255)// Bleu clair
+               themeNotifier.value ? Colors.white : Colors.black,
               ],
               begin: Alignment.topLeft,
               end: Alignment.bottomRight,
@@ -199,7 +199,7 @@ class _ChatScreenState extends State<ChatScreen> {
                 Expanded(
                   child: Container(
                     decoration: BoxDecoration(
-                      color: Colors.white,
+                      color: themeNotifier.value ? Colors.black : Colors.white,
                       borderRadius: BorderRadius.circular(20),
                       boxShadow: [
                         BoxShadow(

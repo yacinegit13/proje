@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:projet_signe/main.dart';
 
 class FruitsPage extends StatelessWidget {
   final List<String> fruitsList = [
@@ -15,7 +16,7 @@ class FruitsPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text("Sign Language Fruits"),
-        backgroundColor: Color.fromARGB(255, 255, 255, 255),
+        backgroundColor: themeNotifier.value ? Colors.black : Colors.white,
       ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),

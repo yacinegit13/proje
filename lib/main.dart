@@ -32,7 +32,7 @@ import 'screens/profile_screen.dart';
 import 'screens/Log_in.dart';
 import 'screens/sing_up.dart';
 import 'screens/first_page.dart';
-import 'screens/seconed_page.dart';
+//import 'screens/seconed_page.dart';
 import 'screens/select_user.dart';
 import 'screens/select.dart';
 import 'screens/theme_notifier.dart';
@@ -98,8 +98,8 @@ class MyApp extends StatelessWidget {
       initialRoute: '/',
       routes: {
         '/': (context) => SplashScreen(),
-        '/logorsign': (context) => FirstPage(),
-        '/signlog': (context) => SecondPage(),
+        //'/logorsign': (context) => SplashScreen(),
+        '/signlog': (context) => FirstPage(),
         '/login': (context) => LogIn(),
         '/signup': (context) => SignUp(),
         '/profilpage':

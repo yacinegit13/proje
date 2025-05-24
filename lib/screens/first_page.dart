@@ -66,27 +66,52 @@ class _FirstPageState extends State<FirstPage> {
                   child: Image.asset('images/photo1.jpg', fit: BoxFit.cover),
                 ),
               ),
-              ElevatedButton(
-                onPressed: () {
-                  Navigator.of(context).pushReplacementNamed('/signlog');
-                },
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.white,
-                  foregroundColor: AppTheme.primaryColor,
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 50,
-                    vertical: 15,
+             const SizedBox(height: 35),
+              // زر Sign Up
+              SizedBox(
+                width: 200,
+                height: 50,
+                child: ElevatedButton(
+                  onPressed: () {
+                    Navigator.pushNamed(context, '/signup');
+                  },
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Color(0xFF1649F1), // لون الزر أزرق
+                    foregroundColor: Colors.white, // لون النص أبيض
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(30),
+                    ),
                   ),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(30),
+                  child: const Text(
+                    'Sign up',
+                    style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
                   ),
-                  elevation: 5,
                 ),
-                child: Text(
-                  'Get Started',
-                  style: Theme.of(
-                    context,
-                  ).textTheme.bodyLarge?.copyWith(fontWeight: FontWeight.bold),
+              ),
+              const SizedBox(height: 20),
+              // زر Login
+              SizedBox(
+                width: 200,
+                height: 50,
+                child: ElevatedButton(
+                  onPressed: () {
+                    Navigator.pushNamed(context, '/login');
+                  },
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.white, // لون الزر أبيض
+                    foregroundColor: Color(0xFF1649F1), // لون النص أزرق
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(30),
+                      side: const BorderSide(
+                        color: Color(0xFF1649F1),
+                        width: 2,
+                      ),
+                    ),
+                  ),
+                  child: const Text(
+                    'Login',
+                    style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+                  ),
                 ),
               ),
             ],

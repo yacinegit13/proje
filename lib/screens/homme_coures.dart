@@ -215,6 +215,7 @@ class HomeScreen extends StatelessWidget {
 
 
 import 'package:flutter/material.dart';
+import 'package:projet_signe/main.dart';
 import 'package:projet_signe/screens/Mycours.dart';
 //import 'package:projet_signe/screens/Quizz.dart';
 import 'package:projet_signe/screens/lesson_card.dart';
@@ -226,7 +227,7 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor:  Colors.white,
+      backgroundColor:  themeNotifier.value ? Colors.black : Colors.white,
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
@@ -236,7 +237,7 @@ class HomeScreen extends StatelessWidget {
            Row(
   children: [
     IconButton(
-      icon: const Icon(Icons.arrow_back,color: Color.fromARGB(255, 63, 150, 222), size: 28),
+      icon: const Icon(Icons.arrow_back,color: Color.fromARGB(255, 63, 150, 222), size: 25),
       onPressed: () {
         Navigator.pushNamed(context, '/start'); // revenir à l'écran précédent
       },
@@ -244,7 +245,7 @@ class HomeScreen extends StatelessWidget {
     const SizedBox(width: 8),
     const Text(
       'Sign Language Lessons',
-      style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold, color: Color.fromARGB(255, 63, 150, 222),),
+      style: TextStyle(fontSize: 21, fontWeight: FontWeight.bold, color: Color.fromARGB(255, 63, 150, 222),),
     ),
   ],
 ),
@@ -270,9 +271,9 @@ class HomeScreen extends StatelessWidget {
             Expanded(
               child: GridView.count(
                 crossAxisCount: 2,
-                childAspectRatio: 0.8,
-                mainAxisSpacing: 16,
-                crossAxisSpacing: 16,
+                childAspectRatio: 0.6,
+                mainAxisSpacing: 27,
+                crossAxisSpacing: 44,
                 children: [
                   LessonCard(
                     title: ' Alphabet letters with signs',
@@ -297,10 +298,10 @@ class HomeScreen extends StatelessWidget {
       bottomNavigationBar: Container(
         height: 70,
         decoration: BoxDecoration(
-          color: Colors.white,
+          color: themeNotifier.value ? Colors.black : Colors.white,
           boxShadow: [
             BoxShadow(
-              color: Colors.grey.withOpacity(0.2),
+              color: themeNotifier.value ? Colors.black : Colors.grey.withOpacity(0.2),
               spreadRadius: 2,
               blurRadius: 8,
             ),
@@ -398,7 +399,7 @@ class HomeScreen extends StatelessWidget {
   }) {
     return Container(
       decoration: BoxDecoration(
-         color: isActive ?  Color.fromARGB(255, 63, 150, 222) : Colors.white,
+         color: isActive ?  Color.fromARGB(255, 63, 150, 222) : themeNotifier.value ? Colors.black : Colors.white,
         borderRadius: BorderRadius.circular(15),
         border: Border.all(
           color:  Color.fromARGB(255, 63, 150, 222), // الإطار باللون الأزرق
@@ -476,7 +477,7 @@ class HomeScreen extends StatelessWidget {
       margin: const EdgeInsets.only(right: 10),
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
-          backgroundColor: Colors.white,
+          backgroundColor: themeNotifier.value ? Colors.black : Colors.white,
          side: const BorderSide(color: Color.fromARGB(255, 63, 150, 222), width: 2),
         foregroundColor: const Color.fromARGB(255, 63, 150, 222),
           shape: RoundedRectangleBorder(
